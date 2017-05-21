@@ -8,7 +8,7 @@ De opdracht was een UML voor het eindproduct, maar dat lijkt me nogal lastig aan
 - Clone of download de bestanden naar je eigen computer
 - Open het project in Visual Studio Code
 - Build het project (CTRL/CMD + Shift + B)
-- Open de dist folder via je localhost
+- Open de docs folder via je localhost
 
 ## Gameplay
 
