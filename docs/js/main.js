@@ -153,10 +153,8 @@ var Game = (function () {
         sky.classList.add("stopanimation");
         var platform = document.getElementById("platform");
         platform.classList.add("stopanimation");
-        var container = document.getElementById("container");
-        var message = document.createElement("message");
+        var message = document.getElementById("message");
         message.innerHTML = m;
-        container.appendChild(message);
     };
     Game.getInstance = function () {
         if (!Game.instance) {
@@ -181,6 +179,8 @@ var Running = (function () {
     };
     Running.prototype.onKeyDown = function (e) {
         if (e.key == ' ') {
+            var message = document.getElementById("message");
+            message.innerHTML = "";
             window.removeEventListener("keydown", this.listener);
             this.dog.state = new Jumping(this.dog);
         }

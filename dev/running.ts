@@ -15,6 +15,9 @@ class Running implements State {
 
     private onKeyDown(e: KeyboardEvent): void {
         if (e.key == ' ') {
+            let message: HTMLElement    = document.getElementById("message");
+            message.innerHTML           = "";
+            
             window.removeEventListener("keydown", this.listener);
             this.dog.state = new Jumping(this.dog);
         }

@@ -36,10 +36,8 @@ class Game {
         let platform: HTMLElement = document.getElementById("platform");
         platform.classList.add("stopanimation");
 
-        let container:  HTMLElement = document.getElementById("container");
-        let message:    HTMLElement = document.createElement("message");
+        let message:    HTMLElement = document.getElementById("message");
         message.innerHTML           = m;
-        container.appendChild(message);
     }
 
     public static getInstance(): Game {
