@@ -1,7 +1,8 @@
 # PRG08-Deelproduct1
 
 ![UML](uml.png?raw=true "UML")
-De opdracht was een UML voor het eindproduct, maar dat lijkt me nogal lastig aangezien we nog niet weten wat er in het eindproduct opgenomen moet worden of hoe dit werkt. Mijn UML is dus een UML van dit deelproduct. GameObject bevat ook getters en setters voor de protected attributes, maar leek me overbodig om dit in het UML op te nemen.
+
+Alle onderdelen van dit klassendiagram werken al.
 
 ## Installatie-instructies
 
