@@ -12,9 +12,11 @@ class Ghost extends GameObject {
     }
 
     public move(): void {
+        // Update x and draw again
         this.x += this.speed;
         this.draw();
 
+        // Spawn a new ghost when a ghost leaves the screen
         let g: Game = Game.getInstance();
         if (this.x + this.width < 0) {
             g.score += 10;

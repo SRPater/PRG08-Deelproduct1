@@ -1,4 +1,5 @@
 class Utils {
+    // Static utility method for collision detection
     public static checkCollision(m: GameObject, n: GameObject): boolean {
         return (m.x < n.x + n.width &&
             m.x + m.width > n.x &&
