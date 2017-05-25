@@ -28,7 +28,8 @@ Alle onderdelen van dit klassendiagram werken al.
 
 ## Review
 
-Live version: https://srpater.github.io/PRG08-Deelproduct1/
+Live version Stefan: https://srpater.github.io/PRG08-Deelproduct1/
+Live version fork: https://omniscientjv.github.io/PRG08-Deelproduct1/
 
 - [x] De code voor het deelproject staat op je eigen GitHub.  
 - [x] Er is een live page waar de game speelbaar is. 
