@@ -4,12 +4,11 @@ class Game {
 
     public  score:      number;
     private scoreDiv:   HTMLElement;
-    private dog:        Dog;
-    public  ghost:      Ghost;
+
+    private gameObjects: GameObject[] = [];
 
     private constructor() {
-        this.dog        = new Dog();
-        this.ghost      = new Ghost();
+        this.gameObjects.push(new Dog(), new Ghost());
         this.scoreDiv   = document.getElementById("score");
         this.score      = 0;
 
@@ -18,8 +17,11 @@ class Game {
 
     private gameLoop(): void {
         // Move the dog and the ghost
-        this.dog.move();
-        this.ghost.move();
+        for(let g of this.gameObjects)
+        {
+            g.update();
+            g.draw();
+        }
 
         // Update the score
         this.scoreDiv.innerHTML = "Score: " + this.score;
@@ -32,8 +34,11 @@ class Game {
         this.scoreDiv.innerHTML = "Final score: " + this.score;
 
         // Remove any remaining ghosts
-        this.ghost.div.remove();
-        this.ghost = null;
+        for(let g of this.findObjects("ghost"))
+        {
+            g.div.remove();
+            g = null;
+        }
 
         // Pause the animations
         let sky: HTMLElement = document.getElementById("sky");
@@ -54,6 +59,23 @@ class Game {
         }
 
         return Game.instance;
+    }
+
+    public findObjects(tag: string, onlyOne=false): GameObject[]
+    {
+        let fnd: GameObject[] = [];
+        for(let g of this.gameObjects)
+        {
+            if(g.tag == tag)
+            {
+                fnd.push(g);
+
+                if(onlyOne) // escape the loop if we only want one returned result.
+                    break;
+            }
+        }
+
+        return fnd;
     }
 }
 

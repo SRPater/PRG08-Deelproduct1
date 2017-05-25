@@ -25,3 +25,30 @@ Alle onderdelen van dit klassendiagram werken al.
 - Encapsulation: is in verschillende classes ingebouwd middels access modifiers (private, protected, public) en het gebruik van getters en setters.
 - Composition: is in verschillende classes ingebouwd middels "heeft een"-relaties, bijvoorbeeld: een "Dog" heeft een "State".
 - Inheritance: is ingebouwd middels "Dog", "Ghost" en "GameObject". De classes "Dog" en "Ghost" zijn allebei overervingen van de class "GameObject".
+
+## Review
+
+Live version: https://srpater.github.io/PRG08-Deelproduct1/
+
+- [x] De code voor het deelproject staat op je eigen GitHub.  
+- [x] Er is een live page waar de game speelbaar is. 
+- [ ] Het deelproduct moet werkend zijn zonder bugs / foutmeldingen. 
+- [x] Het project bevat een Readme bestand met installatie instructies. Deze instructies stellen de gebruiker in staat om het deelproduct te installeren en te openen.  
+- [x] Er is een klassendiagram voor het eindproduct. Hierin is aangegeven welke onderdelen al werkend zijn. 
+- [x] Het Readme bestand legt uit waar de onderstaande programmeerprincipes zijn toegepast in het project 
+
+- [x]  Interface & strategy pattern: Interface correct toegepast, State interface gebruikt om strategy pattern toe te passen.
+- [x]  Static utility method: Static method uit de les.
+- [x]  Singleton: Singleton zoals behandelt in de les. Kan niet perongeluk een instantie maken doordat constructor private is.
+- [x]  Inheritance: Je hebt een Base GameObject class, en Dog en Ghost stammen hier van af. Je hebt wel een Draw method maar geen Update method waardoor je handmatig de Move method van Dog en Ghost moet aanroepen.
+- [x]  Composition: Prima.
+- [x]  Encapsulation: Goed gebruik gemaakt van "TypeScript/C#" getters/setters. 
+
+## Beoordeling
+Voldoende!
+
+## Aanpassing
+Bug fix: Error als de game afgelopen was en Move nog een keer aangeroepen werd.
+Abstractie: Update functie in GameObject, extending classes (Dog en Ghost) implementeren deze en roepen Move aan.
+Game class heeft nu een GameObjects array waar de Dog en Ghost in worden geplaatst. Hier wordt overheen geloopt en de update en draw functie aangeroepen.
+De Game class heeft nu ook een findObjects functie waar op tag kan worden gezocht zodat objecten elkaar kunnen beinvloeden zonder een directe referentie.

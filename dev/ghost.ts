@@ -11,6 +11,10 @@ class Ghost extends GameObject {
         this.draw();
     }
 
+    public update(): void {
+        return this.move();
+    }
+
     public move(): void {
         // Update x and draw again
         this.x += this.speed;
@@ -20,7 +24,7 @@ class Ghost extends GameObject {
         let g: Game = Game.getInstance();
         if (this.x + this.width < 0) {
             g.score += 10;
-            g.ghost = new Ghost();
+            this.x = 1024;
         }
     }
 }

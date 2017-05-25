@@ -19,10 +19,14 @@ class Dog extends GameObject {
         this.draw();
     }
 
+    public update(): void {
+        return this.move();
+    }
+
     public move(): void {
         // Set state to losing if collision with a ghost is detected
         let g: Game = Game.getInstance();
-        if (Utils.checkCollision(this, g.ghost)) {
+        if (Utils.checkCollision(this, Game.getInstance().findObjects("ghost", true)[0])) {
             this.state = new Losing(this);
         }
 
