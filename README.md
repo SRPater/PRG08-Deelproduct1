@@ -28,7 +28,7 @@ Alle onderdelen van dit klassendiagram werken al.
 
 ## Review
 
-Live version Stefan: https://srpater.github.io/PRG08-Deelproduct1/
+Live version Stefan: https://srpater.github.io/PRG08-Deelproduct1/  
 Live version fork: https://omniscientjv.github.io/PRG08-Deelproduct1/
 
 - [x] De code voor het deelproject staat op je eigen GitHub.  
@@ -49,7 +49,7 @@ Live version fork: https://omniscientjv.github.io/PRG08-Deelproduct1/
 Voldoende!
 
 ## Aanpassing
-Bug fix: Error als de game afgelopen was en Move nog een keer aangeroepen werd.
-Abstractie: Update functie in GameObject, extending classes (Dog en Ghost) implementeren deze en roepen Move aan.
-Game class heeft nu een GameObjects array waar de Dog en Ghost in worden geplaatst. Hier wordt overheen geloopt en de update en draw functie aangeroepen.
+Bug fix: Error als de game afgelopen was en Move nog een keer aangeroepen werd.  
+Abstractie: Update functie in GameObject, extending classes (Dog en Ghost) implementeren deze en roepen Move aan.  
+Game class heeft nu een GameObjects array waar de Dog en Ghost in worden geplaatst. Hier wordt overheen geloopt en de update en draw functie aangeroepen.  
 De Game class heeft nu ook een findObjects functie waar op tag kan worden gezocht zodat objecten elkaar kunnen beinvloeden zonder een directe referentie.
