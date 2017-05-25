@@ -5,6 +5,7 @@ class GameObject {
     protected   _width:   number;
     protected   _height:  number;
     protected   _speed:   number = 0;
+    protected   _tag:     string;
 
     // Getters and setters for protected properties
     public get speed(): number  { return this._speed; }
@@ -22,15 +23,21 @@ class GameObject {
     public get height(): number     { return this._height; }
     public set height(h: number)    { this._height = h; }
 
+    public get tag(): string     { return this._tag; }
+    public set tag(tag: string)    { this._tag = tag; }
+
     constructor(tag: string) {
         // Create an element and append it to the container
         let container: HTMLElement  = document.getElementById("container");
         this.div                    = document.createElement(tag);
+        this._tag                   = tag;
         container.appendChild(this.div);
     }
 
-    protected draw(): void {
+    public draw(): void {
         // Draw the object
         this.div.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
     }
+
+    public update(): void {}
 }

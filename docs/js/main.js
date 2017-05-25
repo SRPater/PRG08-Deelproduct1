@@ -13,6 +13,7 @@ var GameObject = (function () {
         this._speed = 0;
         var container = document.getElementById("container");
         this.div = document.createElement(tag);
+        this._tag = tag;
         container.appendChild(this.div);
     }
     Object.defineProperty(GameObject.prototype, "speed", {
@@ -45,9 +46,16 @@ var GameObject = (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(GameObject.prototype, "tag", {
+        get: function () { return this._tag; },
+        set: function (tag) { this._tag = tag; },
+        enumerable: true,
+        configurable: true
+    });
     GameObject.prototype.draw = function () {
         this.div.style.transform = "translate(" + this.x + "px, " + this.y + "px)";
     };
+    GameObject.prototype.update = function () { };
     return GameObject;
 }());
 var Dog = (function (_super) {
@@ -63,9 +71,12 @@ var Dog = (function (_super) {
         _this.draw();
         return _this;
     }
+    Dog.prototype.update = function () {
+        return this.move();
+    };
     Dog.prototype.move = function () {
         var g = Game.getInstance();
-        if (Utils.checkCollision(this, g.ghost)) {
+        if (Utils.checkCollision(this, Game.getInstance().findObjects("ghost", true)[0])) {
             this.state = new Losing(this);
         }
         this.state.update();
@@ -88,13 +99,16 @@ var Ghost = (function (_super) {
         _this.draw();
         return _this;
     }
+    Ghost.prototype.update = function () {
+        return this.move();
+    };
     Ghost.prototype.move = function () {
         this.x += this.speed;
         this.draw();
         var g = Game.getInstance();
         if (this.x + this.width < 0) {
             g.score += 10;
-            g.ghost = new Ghost();
+            this.x = 1024;
         }
     };
     return Ghost;
@@ -132,23 +146,29 @@ var Losing = (function () {
 var Game = (function () {
     function Game() {
         var _this = this;
-        this.dog = new Dog();
-        this.ghost = new Ghost();
+        this.gameObjects = [];
+        this.gameObjects.push(new Dog(), new Ghost());
         this.scoreDiv = document.getElementById("score");
         this.score = 0;
         requestAnimationFrame(function () { return _this.gameLoop(); });
     }
     Game.prototype.gameLoop = function () {
         var _this = this;
-        this.dog.move();
-        this.ghost.move();
+        for (var _i = 0, _a = this.gameObjects; _i < _a.length; _i++) {
+            var g = _a[_i];
+            g.update();
+            g.draw();
+        }
         this.scoreDiv.innerHTML = "Score: " + this.score;
         requestAnimationFrame(function () { return _this.gameLoop(); });
     };
     Game.prototype.gameOver = function (m) {
         this.scoreDiv.innerHTML = "Final score: " + this.score;
-        this.ghost.div.remove();
-        this.ghost = null;
+        for (var _i = 0, _a = this.findObjects("ghost"); _i < _a.length; _i++) {
+            var g = _a[_i];
+            g.div.remove();
+            g = null;
+        }
         var sky = document.getElementById("sky");
         sky.classList.add("stopanimation");
         var platform = document.getElementById("platform");
@@ -161,6 +181,19 @@ var Game = (function () {
             Game.instance = new Game();
         }
         return Game.instance;
+    };
+    Game.prototype.findObjects = function (tag, onlyOne) {
+        if (onlyOne === void 0) { onlyOne = false; }
+        var fnd = [];
+        for (var _i = 0, _a = this.gameObjects; _i < _a.length; _i++) {
+            var g = _a[_i];
+            if (g.tag == tag) {
+                fnd.push(g);
+                if (onlyOne)
+                    break;
+            }
+        }
+        return fnd;
     };
     return Game;
 }());
